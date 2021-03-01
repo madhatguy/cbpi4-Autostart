@@ -1,0 +1,14 @@
+#clean
+python3.7 setup.py clean --all
+
+#build
+python3 setup.py sdist
+
+#Upload
+twine upload dist/*
+
+
+# Checkout Pull Request
+git fetch origin pull/ID/head:BRANCHNAMEgit checkout BRANCHNAME
+
+
