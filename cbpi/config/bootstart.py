@@ -8,6 +8,8 @@ if __name__ == '__main__':
         print("Please run 'cbpi setup' before starting the server ")
         print("***************************************************")
     else:
+        with open("test.txt", 'w') as f:
+            f.write("I ran and the curDir is: " + os.path.realpath(os.curdir))
         print("START")
         cbpi = CraftBeerPi()
         cbpi.start()
