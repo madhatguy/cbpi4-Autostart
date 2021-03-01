@@ -24,8 +24,6 @@ from cbpi.controller.system_controller import SystemController
 
 from cbpi.controller.log_file_controller import LogController
 
-from cbpi.autostart import AutostartManager
-
 from cbpi.eventbus import CBPiEventBus
 from cbpi.http_endpoints.http_login import Login
 from cbpi.utils import *
@@ -102,7 +100,6 @@ class CraftBeerPi:
         self.recipe : RecipeController = RecipeController(self)
         #self.satellite: SatelliteController = SatelliteController(self)
         self.dashboard = DashboardController(self)
-        self.autostart_manager = AutostartManager.instance(self)
 
         self.http_step = StepHttpEndpoints(self)
         self.http_recipe = RecipeHttpEndpoints(self)
@@ -256,7 +253,6 @@ class CraftBeerPi:
         await self.job.init()
         
         await self.config.init()
-        self.autostart_manager.init()
         self._setup_http_index()
         self.plugin.load_plugins()
         self.plugin.load_plugins_from_evn()
