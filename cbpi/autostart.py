@@ -37,7 +37,7 @@ class AutostartManager(CBPiExtension):  # todo - inheritance?
     def remove_from_autostart(self):
         if os.path.exists(PATH):
             os.remove(PATH)
-            os.system('update-rc.d -f craftbeerpiboot remove')
+            os.system('sudo update-rc.d -f craftbeerpiboot remove')
             self.cbpi.notify("CBPi4 Removed from Autostart", type="info")
             logging.info("CBPi4 removed from autostart")
 
@@ -46,6 +46,6 @@ class AutostartManager(CBPiExtension):  # todo - inheritance?
             os.system('sed "s@#DIR#@{path}@g" /usr/local/lib/python3.7/dist-packages/cbpi/config/craftbeerpiboot > '
                       .format(path=os.path.realpath(os.curdir)) + PATH)
             os.system("sudo chmod 755 " + PATH)
-            os.system('update-rc.d craftbeerpiboot defaults')
+            os.system('sudo update-rc.d craftbeerpiboot defaults')
             self.cbpi.notify("CBPi4 Added to Autostart", type="success")
             logging.info("CBPi4 added to autostart")
