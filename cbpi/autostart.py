@@ -46,6 +46,6 @@ class AutostartManager(CBPiExtension):  # todo - inheritance?
             os.system('sed "s@#DIR#@{path}@g" /usr/local/lib/python3.7/dist-packages/cbpi/config/craftbeerpiboot > '
                       .format(path=os.path.realpath(os.curdir)) + PATH)
             os.system("sudo chmod 755 " + PATH)
-            os.system('sudo update-rc.d craftbeerpiboot defaults')
+            os.system('sudo update-rc.d craftbeerpiboot defaults 99')
             self.cbpi.notify("CBPi4 Added to Autostart", type="success")
             logging.info("CBPi4 added to autostart")
